@@ -24,6 +24,15 @@ build_common_create_venv() {
     "$WEBUI_VENV_PYTHON" -m ipykernel install \
         --name="python3" \
         --display-name="Python3 (ipykernel)"
+
+    # Infinite Browser venv
+    "python${PYTHON_VERSION}" -m venv "$INFINITE_BROWSER_VENV"
+    "$INFINITE_BROWSER_VENV_PIP" install --no-cache-dir \
+        ipykernel \
+        ipywidgets
+    "$INFINITE_BROWSER_VENV_PYTHON" -m ipykernel install \
+        --name="infinite-browser" \
+        --display-name="Python${PYTHON_VERSION} (infinite-browser)"
 }
 
 

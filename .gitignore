@@ -4,3 +4,4 @@ config/authorized_keys
 config/rclone
 tpdocs
 .env
+.DS_Store

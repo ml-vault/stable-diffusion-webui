@@ -3,8 +3,7 @@
 source /opt/ai-dock/etc/environment.sh
 
 build_common_main() {
-    # Nothing to do
-    :
+    build_common_install_infinite_browser
 }
 
 build_common_install_webui() {
@@ -21,6 +20,12 @@ build_common_install_webui() {
     git checkout "$WEBUI_BUILD_REF"
     
     "$WEBUI_VENV_PIP" install --no-cache-dir -r requirements_versions.txt
+}
+
+build_common_install_infinite_browser() {
+    git clone https://github.com/ml-vault/sd-webui-infinite-image-browsing.git /opt/ai-dock/infinite-browser
+    $INFINITE_BROWSER_VENV_PIP install --no-cache-dir \
+        -r /opt/ai-dock/infinite-browser/requirements.txt
 }
 
 build_common_run_tests() {
